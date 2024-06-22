@@ -7,11 +7,11 @@ function Optionsmenu()
 {
 return(
 <>
-<header>
+
 <div id = "optionsmenu">
-    <img src = "./logo/Tomato.png" height = "50" length = "50"></img>
-<p>Welcome to the Pomomatic!</p>  
- <Link to = "/Listinput"><button>Create custom Pomodoro</button></Link>
+
+
+ 
 <Popup trigger =
 
 {<button id = "optionsbutton">Options</button>}
@@ -42,7 +42,7 @@ Close
 </Popup>   
 
 </div>    
-</header>
+
 </>
 
 )

@@ -15,7 +15,7 @@ export default function Quoteviewer(){
        let x = JSON.stringify(quotes[ranid]);
  
  return(
-    <div>
+    <div id = "quotes">
    <p>{x}</p>
     </div>
  

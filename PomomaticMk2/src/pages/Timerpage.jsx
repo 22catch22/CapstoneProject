@@ -3,7 +3,8 @@ import Quoteviewer from "../Components/Quoteviewer"
 import Timer from "../Components/Timer"
 import { Link } from "react-router-dom"
 import MusicPlayer from "../Components/Musicplayer"
-import DisplayNotes from "../Components/displayNotes"
+import { UserContext } from "../Context/userContext"
+import { useContext } from "react"
 import Notes from "../data/Notes" 
 import NoteTaker from "../Components/Notes2take"
 import Optionsmenu from "../Components/Options"
@@ -13,34 +14,52 @@ import Userinput from "./ListInput"
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
-import ParticleBackground from "../Components/Particles"
-function TimerPage(){
-const time = new Date();
- 
-time.setMinutes(time.getMinutes() + 25);
+import { useEffect } from "react"
+ import { useState } from "react"
 
+function TimerPage(){
+
+ 
+  const{user} = useContext(UserContext);
+ 
+ 
+const time = new Date();
+time.setMinutes(time.getMinutes()+ 10)
+ 
 return (
-<>
- <Navbar className="bg-body-tertiary">
-  <ParticleBackground/>
-<Optionsmenu/>
-</Navbar> 
+<> 
+<span className='font-link'>
+<div>
+<div id = "loginbar">
+  <img src = "./logo/Tomato.png" id = "tomatopic2" height = "100" length = "100"></img>
+ 
+  <div id = "greeting">{!!user && (<h3>Welcome {user.username}!</h3>)}
+
+ <Quoteviewer/>
+  <Link to = "/"><button>Logout</button></Link>
+  </div> 
+  <Timer expiryTimestamp={time}/>
+
+ </div>
 
 <div id = "timerpage">
+ <div id = "backing">
 
- 
 <Displayvideonotes/>
- <Card id="timercard" className = 'mb-2'>
-<Card.Body><Quoteviewer/>
-<Timer expiryTimestamp={time}/>
-</Card.Body>
 
-</Card>
-<MusicPlayer/>
+
 </div>
 
+ <Card id="timercard" className = 'mb-2'>
 
 
+</Card>
+
+
+</div>
+
+ </div>
+</span>
 </>
 
 )

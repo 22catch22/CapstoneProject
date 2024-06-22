@@ -1,8 +1,8 @@
  
 import VideoandNote from "./Videoandnote";
  import NoteTaker from "./Notes2take";
-import DisplayNotes from "./displayNotes";
- 
+import Optionsmenu from "./Options";
+
 
 function Displayvideonotes()
 {
@@ -11,6 +11,7 @@ function Displayvideonotes()
  <>
  
 <div id= "Notevideobox">
+   
 <VideoandNote/>
 <NoteTaker/>
  

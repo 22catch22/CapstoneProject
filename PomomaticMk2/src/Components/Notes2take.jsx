@@ -1,43 +1,48 @@
-import { useContext, useState} from "react";
-import notes from "../data/Notes";
-import Notes from "../data/Notes"
- 
-import DisplayNotes from "./displayNotes";
-import { noteContext } from "../App";
+import {useState,useEffect, useContext} from "react";
+import axios from 'axios'
+ import { UserContext } from "../Context/userContext";
+ import {toast} from 'react-hot-toast'
+import MusicPlayer from "./Musicplayer";
+
+
 function NoteTaker()
  //This is where we add the comments 
 {
-
-const {createNote} = useContext(noteContext)
-const handysub = (e) => {e.preventDefault();
  
-let fData = new FormData(e.target);
-
-let newNote = {
-Text: fData.get("Notebox"),
-};
+const [notelist, setNotelist]= useState([])
+const [note, setNote] = useState('')
  
-createNote(newNote)
-Notes.push(newNote);
-e.target.reset();
-console.log(Notes);
+function CreatenewNotes()
+{
+ 
+    setNotelist(...prevnotes, note)
+console.log(notelist)
+
 }
 
 return (
-<>
- 
-<div id = "notefield">
+<> 
+ <div id = "notefield">
  <div id = "notedisplay">
-<form id = "noteform" onSubmit={handysub}>
+<form id = "noteform" onSubmit={CreatenewNotes}>
 
-<input type = "text" name = "Notebox" id = "Notebox"placeholder="Type Your Notes Here" required></input>
- <button type = "submit" id = "notebutton">Post</button>
+<input 
+type = "text"
+id = "notetext" 
+ 
+onChange = {(e)=> setNote(e.target.value)}
+/>
+ <button id = "notebutton" type = "submit">Post</button>
  </form>
-<DisplayNotes/>
+ <div> 
+    <ul>{notelist.map((not) => (
+ <li key = {not.id}>{not.text}</li>
+))}
+</ul>
+</div>
 </div>
 </div>
 </>
-)
+)}
 
-}
 export default NoteTaker

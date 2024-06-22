@@ -18,23 +18,33 @@ import Userinput from './pages/ListInput';
 import axios from 'axios'
 import CreateProfilePage from './pages/CreateProfilePage';
 import {Toaster} from 'react-hot-toast';
-import ParticleBackground from './Components/Particles';
+import { UserContextProvider } from './Context/userContext';
 
 
-axios.defaults.baseURL = 'http://localhost:5173'
+
+axios.defaults.baseURL = 'http://localhost:8008';
 axios.defaults.withCredentials = true
 
-
-
-const noteContext = createContext()
+const timeridcontext = createContext();
+const noteContext = createContext();
 const backgroundContext = createContext();
+const deleteContext = createContext();
 function App(){
 
  const [note, setNote] = useState(Notes)
-function createNote(not)
+function createNoteid (not)
 {not.id = note.length +1;
-    setNote ([note]);
+    setNote([note]);
 }
+
+
+
+function deleteNote(not)
+{
+const newnotes = Notes.filter((not.id !== id))
+setNote([newnotes]);
+}
+ 
 
  const [image, setBackgroundImage] = useState(backgroundImage);
  function createbackground(bpic)
@@ -45,23 +55,24 @@ setBackgroundImage([backgroundImage])
 
  return(
 <BrowserRouter>
-
+<UserContextProvider>
  <backgroundContext.Provider value = {{image, createbackground}}> 
- <noteContext.Provider value ={{note, createNote}}> 
+ <noteContext.Provider value ={{note, createNoteid}}> 
+ <deleteContext.Provider value = {{note, deleteNote}}/>
  <Toaster position = 'bottom-right' toastOptions={{duration:2000}}/>
-<Routes>
+ <Routes>
 
 <Route path = '/' element = {<Login />}/>
+ 
 <Route path = "/CreateProfile" element = {<CreateProfile/>}/>
 <Route path = "/Pomoinfo" element = {<Pomoinfo/>}/>
 <Route path = "CreateProfilePage" element = {<CreateProfilePage/>}/>
 <Route path = "/Timerpage" element  = {<Timerpage />}/>
 <Route path = "/ListInput.jsx" element = {<ListInput/>}/>
- 
-</Routes>
+ </Routes>
 </noteContext.Provider>
- </backgroundContext.Provider>
- 
+</backgroundContext.Provider>
+</UserContextProvider>
 </BrowserRouter>
 
 )
@@ -69,3 +80,5 @@ setBackgroundImage([backgroundImage])
 
 export default App
 export {noteContext};
+export {deleteContext};
+export {timeridcontext};
