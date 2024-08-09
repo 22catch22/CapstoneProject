@@ -39,7 +39,9 @@ return(
  
 <form id = "newprofileform"onSubmit={CreatenewProfile}>
 <label for = "username">Username</label>
-<p><input type = "Text" name = "Username" placeholder="please enter a username" value = {userData.Username} onChange={(e)=> setUserData({...userData, Username:e.target.value})}required></input></p>
+<p><input type = "Text" name = "Username"
+placeholder="please enter a username" value = {userData.Username}
+onChange={(e)=> setUserData({...userData, Username:e.target.value})}required></input></p>
 <label for = "email">Email</label>
 <p><input type = "email" name = "email"  placeholder="please enter an email address" value ={userData.email} onChange={(e)=> setUserData({...userData, email:e.target.value})}required></input></p>
 <label for = "username">password</label>

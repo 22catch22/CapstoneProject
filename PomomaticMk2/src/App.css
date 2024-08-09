@@ -2,7 +2,7 @@
 
 html
 {  
-background-color: rgb(197, 161, 180);
+ 
 height: 2000px;
 width:2000px;
 display: inline-block;
@@ -69,7 +69,7 @@ h3{
  #root{
    align-items: center;
    display: block;
-background-color: rgb(88, 88, 88);
+ 
     width:2000px;
     height:2000px;
  }
@@ -132,7 +132,7 @@ border-radius: 30px;
 {
 background-color: rgb(197, 193, 193);
 margin-left: 50px;
-margin-top: 70px;
+margin-top: 35px;
 width:1500px;
 border-radius: 90px;
 height:500px;
@@ -222,7 +222,7 @@ margin-right:4px;
 
 #notedisplay
 {
-height:700px;
+height:400px;
 background-color:black;
 border:10px;
 border-color: rgb(120, 128, 128);
@@ -243,6 +243,12 @@ text-align:center;
 
 }
 
+#notedisplay
+{
+ height:500px;
+width:600px
+
+}
 #loginbox
 {
 color:white;
@@ -304,7 +310,7 @@ display: block;
  display: inline-flex;
  align-self: center;
  height: 150;
- width:360px;
+ width:1560px;
  max-width: 200;
  border-radius: 80px;
 background-color: rgb(89, 101, 101);
@@ -320,7 +326,11 @@ background-color: rgb(89, 101, 101);
 li
 {
  background-color: rgb(185, 178, 178);
+ 
  border-radius: 100px;
+ border-style: solid;
+border-color: rgb(164, 149, 149);
+margin-top: 5px;
 }
 
  #loginform

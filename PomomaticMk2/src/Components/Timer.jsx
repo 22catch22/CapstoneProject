@@ -167,7 +167,7 @@ console.log(pomoArray)
    </div>
   {!running && (<button onClick={startTimer}><BsFillPlayFill/></button>)}
     <button onClick={pauseTimer}><BsPauseFill/></button>
-    <p><label for = "minuteinput">Enter minutes</label></p>
+    <p><label htmlFor = "minuteinput">Enter minutes</label></p>
   <input type= "number" min = {0} max = {59} value ={minutes} ref={minuteref} onChange={setthoseMinutes}></input>
   <p> <label for = "secondinput">Enter seconds</label>
   <input type="number" min = {0} max = {59}value = {seconds}  ref = {secondsref} onChange={setthoseSeconds}></input></p>

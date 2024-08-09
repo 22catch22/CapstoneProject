@@ -35,7 +35,7 @@ const user = await User.create
     Username,
     email,
     password: hashpassword,
-     
+ 
 });
 
 return res.json(user);
@@ -43,26 +43,8 @@ return res.json(user);
 {console.log(error);
 }
 };
+
  
-const getNotes = async (req, res) =>
-    {
-    const {notes} = req.body
-    const mynotes = Notes.findOne({notes})
-     return res.json(mynotes)
-    }
-
-
-const postNotes = async (req,res) =>
-{ 
- try
- {
-const notes = req.body
- notes.findOneAndUpdate({_id: notes})
-
-return res.json(Notes.notes)
-}catch(error)
- {console.log()}
-}
 
 //logs in user
 
@@ -75,8 +57,6 @@ if(!user)
 {return res.json
 ({error:"Sorry, but I can't find that user"})
 }
-
-
 
 //checks passwords
 const matchmaker = await comparePassword(password, user.password)
@@ -98,6 +78,28 @@ catch(error)
 }
 }  
 
+//--//
+const deleteNote = async (req, res) =>{
+ 
+const noteId = req.params.noteId
+ 
+try{const note = Notes.findOne({_id:noteId})
+console.log(noteId)
+if (!note){
+return res.status(404).json ({error:true, message:"Error"
+});
+}
+await Notes.deleteOne({_id:noteId})
+
+return res.json
+({error: false, message:"Note deleted. You monster."})
+}
+catch(error)
+{return res.status(500).json(
+{error:true, message: "Internal Server Error",})}
+}
+//--//
+ 
 const getUser = (req, res) =>
 {const {token} = req.cookies
  if (token)
@@ -108,8 +110,40 @@ res.json(user)
 else{res.json(null)}
 }
 
+//Allows user to add Notes
+const postNotes = async(req, res) =>{
+const {userId, text, created} = req.body
+ 
+try{
+const note = await Notes.create({
+userId,
+text,
+created, 
+});
+if (!note)
+    {return res.json({error:"Please enter a note"})}
+console.log(note)
+await note.save();
 
+return res.json({error:false,
+    note, 
+    message:"Note added :)",
+});
+}catch (error){return res.status(500).json}
+
+}
+
+//fetches Notes
+const getNotes = async(req, res) => {
+Notes.find()
+.then(notes => res.json(notes))
+.catch(err => res.json(err))
+console.log
+ 
+}
+ 
+ 
 
 const postPomos = (req, res) =>{}
 
-module.exports = {createProfile, loginProfile, getUser, postNotes, getNotes}
+module.exports = {createProfile, loginProfile, getUser, postNotes, getNotes, deleteNote}

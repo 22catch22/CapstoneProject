@@ -13,7 +13,7 @@ function Displayvideonotes()
 <div id= "Notevideobox">
    
 <VideoandNote/>
-<NoteTaker/>
+ <NoteTaker/>
  
   
 </div>

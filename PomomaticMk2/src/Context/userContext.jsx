@@ -22,3 +22,4 @@ useEffect(() => {
     
         )
 }
+export default UserContext

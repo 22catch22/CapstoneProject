@@ -21,7 +21,7 @@ app.use('/createProfile', require('./Routes/authRoutes'));
 app.use('/loginProfile', require ('./Routes/authRoutes'));
 app.use('/getUser', require('./Routes/authRoutes')) 
 app.use('/getNotes', require ('./Routes/authRoutes'))
-app.use('/postnotes', require('./Routes/authRoutes'))
-
+app.use('/postNotes', require('./Routes/authRoutes'))
+app.use('/deleteNote/:noteId',  require ('./Routes/authRoutes'))
 const port = process.env.port || 8008;
 app.listen(port, () => console.log(`Server is running on '${port}'`))

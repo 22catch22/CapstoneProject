@@ -11,7 +11,7 @@ useEffect(() => {
 
     axios.get('./Notes').then(({data}) => {
     setNotes(data)})
-    
+   
     }
 }, [])
     return (
@@ -22,3 +22,4 @@ useEffect(() => {
     
         )
 }
+export default NoteContext
